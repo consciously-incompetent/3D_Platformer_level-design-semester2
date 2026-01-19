@@ -9,8 +9,10 @@ public class MoveToPoints : MonoBehaviour
 {
 	public float speed;										//how fast to move
 	public float delay;										//how long to wait at each waypoint
-	public type movementType;								//stop at final waypoint, loop through waypoints or move back n forth along waypoints
-	
+	public type movementType;                               //stop at final waypoint, loop through waypoints or move back n forth along waypoints
+
+
+
 	public enum type { PlayOnce, Loop, PingPong }
 	private int currentWp;
 	private float arrivalTime;
@@ -54,10 +56,12 @@ public class MoveToPoints : MonoBehaviour
 	
 	void Update()
 	{
+		 
+		
 		//if we've arrived at waypoint, get the next one
-		if(waypoints.Count > 0)
+		if (waypoints.Count > 0)
 		{
-			if(!arrived)
+			if (!arrived)
 			{
 				if (Vector3.Distance(transform.position, waypoints[currentWp].position) < 0.3f)
 				{
@@ -67,7 +71,7 @@ public class MoveToPoints : MonoBehaviour
 			}
 			else
 			{
-				if(Time.time > arrivalTime + delay)
+				if (Time.time > arrivalTime + delay)
 				{
 					GetNextWP();
 					arrived = false;
