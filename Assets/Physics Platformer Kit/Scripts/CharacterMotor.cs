@@ -5,8 +5,9 @@
 [RequireComponent(typeof(Rigidbody))]
 public class CharacterMotor : MonoBehaviour 
 {
-	public bool sidescroller;		//freezes Z movement if true
-	[HideInInspector]
+	public bool sidescroller;
+    public bool sidescrollerX;   //freezes Z movement if true
+    [HideInInspector]
 	public Vector3 currentSpeed;
 	[HideInInspector]
 	public float DistanceToTarget;
@@ -20,7 +21,9 @@ public class CharacterMotor : MonoBehaviour
 		rigid.interpolation = RigidbodyInterpolation.Interpolate;
 		if(sidescroller)
 			rigid.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-		else
+		else if(sidescrollerX)
+            rigid.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX;
+        else
 			rigid.constraints = RigidbodyConstraints.FreezeRotation;
 		//add frictionless physics material
 		if(GetComponent<Collider>().material.name == "Default (Instance)")
