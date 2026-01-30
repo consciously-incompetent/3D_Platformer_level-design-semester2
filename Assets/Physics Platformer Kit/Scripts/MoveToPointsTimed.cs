@@ -13,6 +13,7 @@ public class MoveToPointsTimed : MonoBehaviour
 	public float offset;
 	public CycleType cycleType;                             //stop at final waypoint, loop through waypoints or move back n forth along waypoints
 	public MoveType movementType;
+
 	
 	public enum CycleType { PlayOnce, Loop, PingPong, StartToEnd }
 	public enum MoveType { Lerp, Ease }
