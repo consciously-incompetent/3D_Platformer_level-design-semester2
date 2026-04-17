@@ -7,6 +7,7 @@ public class LightSwitch : MonoBehaviour
     float t;
     public AnimationCurve curve;
     public float maxTime;
+    public float MaxIntensity = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +18,7 @@ public class LightSwitch : MonoBehaviour
     void Update()
     {
         t += Time.deltaTime;
-        light.intensity = Mathf.Lerp(0,1,curve.Evaluate(t));
+        light.intensity = Mathf.Lerp(0,MaxIntensity,curve.Evaluate(t));
         if(t > maxTime)
         {
             t = 0;
